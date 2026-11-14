@@ -12,7 +12,7 @@ st.set_page_config(page_title="SkySafe", page_icon="✈️", layout="wide")
 @st.cache_data
 def load_data():
     # Load the TEXT data for the beautiful charts
-    df = pd.read_csv(r"C:\Users\sushm\OneDrive\Desktop\SEM 5\ML\SKYSAFE\data\processed\SkySafeDB_cleaned.csv")
+    df = pd.read_csv("data/processed/SkySafeDB_cleaned.csv")
     
     # Re-create HEIGHT_BAND for the charts (since cleaned doesn't have it)
     def get_height_band(h):
@@ -24,8 +24,8 @@ def load_data():
 
 @st.cache_resource
 def load_models():
-    model = joblib.load(r"C:\Users\sushm\OneDrive\Desktop\SEM 5\ML\SKYSAFE\models\best_model.pkl")
-    feature_cols = joblib.load(r"C:\Users\sushm\OneDrive\Desktop\SEM 5\ML\SKYSAFE\models\feature_cols.pkl")
+    model = joblib.load("models/best_model.pkl")
+    feature_cols = joblib.load("models/feature_cols.pkl")
     return model, feature_cols
 
 df = load_data()
